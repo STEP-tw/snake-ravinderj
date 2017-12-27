@@ -9,6 +9,7 @@ const animateSnake=function() {
   let oldHead=snake.getHead();
   let oldTail=snake.move();
   let head=snake.getHead();
+  console.log(head);
   paintBody(oldHead);
   unpaintSnake(oldTail);
   paintHead(head);
@@ -61,7 +62,14 @@ const startGame=function() {
   createFood(numberOfRows,numberOfCols);
   drawFood(food);
   addKeyListener();
+
   animator=setInterval(animateSnake,140);
+}
+
+const foo = function(){
+  if(snake.hasTouchTheWall()){
+    clearInterval("animator");
+  }
 }
 
 window.onload=startGame;

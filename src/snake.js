@@ -3,6 +3,13 @@ const Snake=function(head,body) {
   this.body=body;
 }
 
+let wallCoords = {
+  "west":1,
+  "east":119,
+  "north":-1,
+  "south":60
+};
+
 Snake.prototype={
   getBody:function() {
     return this.body;
@@ -23,5 +30,16 @@ Snake.prototype={
   },
   turnRight:function() {
     this.head=this.head.turnRight();
+  },
+  hasTouchTheWall : function(){
+    let snakeDirection = this.head.direction;
+    let snakeCoord;
+    if(snakeDirection == "east" || snakeDirection == "west"){
+      snakeCoord = this.head.x;
+    }else{
+      snakeCoord = this.head.y;
+    }
+    console.log(wallCoords[snakeDirection]);
+    return snakeCoord == wallCoords[snakeDirection];
   }
 }
