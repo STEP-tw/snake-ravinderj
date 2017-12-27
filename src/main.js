@@ -14,7 +14,11 @@ let wallCoords = {
 
 
 const animateSnake=function() {
-  stopGame();
+  // stopGame();
+  if(snake.hasTouchedTheWall() || snake.hasBittenItself()){
+    clearInterval(animator);
+    return;
+  }
   console.log(snake.hasBittenItself());
   let oldHead=snake.getHead();
   let oldTail=snake.move();
@@ -77,10 +81,10 @@ const startGame=function() {
   animator=setInterval(animateSnake,140);
 }
 
-const stopGame = function(){
-  if(snake.hasTouchedTheWall() || snake.hasBittenItself()){
-    clearInterval(animator);
-  }
-}
+// const stopGame = function(){
+//   if(snake.hasTouchedTheWall() || snake.hasBittenItself()){
+//     clearInterval(animator);
+//   }
+// }
 
 window.onload=startGame;
