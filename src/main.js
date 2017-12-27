@@ -14,10 +14,12 @@ let wallCoords = {
 
 
 const animateSnake=function() {
-  foo();
+  stopGame();
+  console.log(snake.hasBittenItself());
   let oldHead=snake.getHead();
   let oldTail=snake.move();
   let head=snake.getHead();
+  console.log(snake.body);
   console.log(head);
   paintBody(oldHead);
   unpaintSnake(oldTail);
@@ -71,12 +73,14 @@ const startGame=function() {
   createFood(numberOfRows,numberOfCols);
   drawFood(food);
   addKeyListener();
-
+  // animateSnake();
   animator=setInterval(animateSnake,140);
 }
 
-const foo = function(){
-  if(snake.hasTouchTheWall()){
+const stopGame = function(){
+  if(snake.hasTouchedTheWall()){
+    clearInterval(animator);
+  }else if (snake.hasBittenItself()) {
     clearInterval(animator);
   }
 }

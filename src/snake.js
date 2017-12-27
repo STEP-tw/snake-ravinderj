@@ -24,7 +24,7 @@ Snake.prototype={
   turnRight:function() {
     this.head=this.head.turnRight();
   },
-  hasTouchTheWall : function(){
+  hasTouchedTheWall: function(){
     let snakeDirection = this.head.direction;
     let snakeCoord;
     if(snakeDirection == "east" || snakeDirection == "west"){
@@ -33,5 +33,11 @@ Snake.prototype={
       snakeCoord = this.head.y;
     }
     return snakeCoord == wallCoords[snakeDirection];
+  },
+  hasBittenItself: function(){
+    let self = this;
+    return this.body.some(function(bodyPart){
+      return self.head.isSameCoordAs(bodyPart);
+    })
   }
 }
