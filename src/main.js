@@ -78,9 +78,7 @@ const startGame=function() {
 }
 
 const stopGame = function(){
-  if(snake.hasTouchedTheWall()){
-    clearInterval(animator);
-  }else if (snake.hasBittenItself()) {
+  if(snake.hasTouchedTheWall() || snake.hasBittenItself()){
     clearInterval(animator);
   }
 }
