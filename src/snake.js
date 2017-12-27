@@ -3,13 +3,6 @@ const Snake=function(head,body) {
   this.body=body;
 }
 
-let wallCoords = {
-  "west":1,
-  "east":119,
-  "north":-1,
-  "south":60
-};
-
 Snake.prototype={
   getBody:function() {
     return this.body;
@@ -39,7 +32,6 @@ Snake.prototype={
     }else{
       snakeCoord = this.head.y;
     }
-    console.log(wallCoords[snakeDirection]);
     return snakeCoord == wallCoords[snakeDirection];
   }
 }

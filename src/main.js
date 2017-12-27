@@ -5,7 +5,16 @@ let numberOfCols=120;
 
 let animator=undefined;
 
+let wallCoords = {
+  "west":0,
+  "east":119,
+  "north":0,
+  "south":59
+};
+
+
 const animateSnake=function() {
+  foo();
   let oldHead=snake.getHead();
   let oldTail=snake.move();
   let head=snake.getHead();
@@ -68,7 +77,7 @@ const startGame=function() {
 
 const foo = function(){
   if(snake.hasTouchTheWall()){
-    clearInterval("animator");
+    clearInterval(animator);
   }
 }
 
